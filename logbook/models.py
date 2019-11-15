@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime, timedelta, time
+import datetime
 
 # Create your models here.
 
@@ -29,7 +29,5 @@ class Activity(models.Model):
         return self.description
 
     def get_duration(self):
-        print(self.endTime)
-        print(self.startTime)
-        return self.endTime - self.startTime
+        return self.startTime
  
