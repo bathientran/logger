@@ -21,7 +21,9 @@ def dayView(request, day_id):
             activity = Activity()
             activity.day = day
             activity.startTime = arrow.get(request.POST["startTime"],'YYYY-MM-DDTHH:mm').datetime
+            print(activity.startTime)
             activity.endTime = arrow.get(request.POST["endTime"],'YYYY-MM-DDTHH:mm').datetime
+            print(activity.endTime)
             activity.description = form.cleaned_data["description"]
             activity.category = form.cleaned_data["category"]
             activity.save()
