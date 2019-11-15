@@ -29,5 +29,5 @@ class Activity(models.Model):
         return self.description
 
     def get_duration(self):
-        return datetime.datetime.combine(self.day.entryDate,self.startTime)-datetime.datetime.combine(self.day.entryDate,self.endTime)
+        return datetime.datetime.combine(self.day.entryDate,self.endTime)-datetime.datetime.combine(self.day.entryDate,self.startTime)
  
