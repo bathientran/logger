@@ -16,6 +16,7 @@ def dayView(request, day_id):
         form = ActivityForm(p)
         form.data["startTime"] = arrow.get(request.POST["startTime"],'YYYY-MM-DDTHH:mm').datetime
         form.data["endTime"] = arrow.get(request.POST["endTime"],'YYYY-MM-DDTHH:mm').datetime
+        print(form.data)
         if form.is_valid():
             activity = Activity()
             activity.day = day
