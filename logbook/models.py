@@ -20,8 +20,8 @@ class Activity(models.Model):
     )
 
     day = models.ForeignKey(Day, on_delete=models.CASCADE)
-    startTime = models.DateTimeField(default=datetime.datetime.now(), blank=True)
-    endTime = models.DateTimeField(default=datetime.datetime.now(), blank=True)
+    startTime = models.DateTimeField()
+    endTime = models.DateTimeField()
     description = models.CharField(max_length=200)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
 
@@ -29,7 +29,7 @@ class Activity(models.Model):
         return self.description
 
     def get_duration(self):
-        print(self.startTime)
-        print(self.endTime)
+        print(self.day.entryDate)
+        print(datetime.datetime.combine(self.day.entryDate,self.startTime))
         return type(self.startTime), type(self.endTime)
  
