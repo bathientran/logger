@@ -29,5 +29,7 @@ class Activity(models.Model):
         return self.description
 
     def get_duration(self):
+        print(self.startTime)
+        print(self.endTime)
         return type(self.startTime), type(self.endTime)
  
