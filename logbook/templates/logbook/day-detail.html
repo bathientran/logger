@@ -35,8 +35,8 @@
     </tbody>
     {% for activity in day.activity_set.all %}
         <tr>
-            <td>{{ activity.startTime}}</td>
-            <td>{{ activity.endTime}}</td>
+            <td>{{ activity.startTime }}</td>
+            <td>{{ activity.endTime }}</td>
             <td>{{ activity.get_duration }}</td>
             <td>{{ activity.description }}</td>
             <td>{{ activity.category }}</td>

@@ -14,13 +14,13 @@ def dayView(request, day_id):
     if request.method == 'POST':
         p = request.POST.copy()
         form = ActivityForm(p)
-        form.data["startTime"] = arrow.get(request.POST["startTime"],'HH:mm:ss').datetime
-        form.data["endTime"] = arrow.get(request.POST["endTime"],'HH:mm:ss').datetime
+        form.data["startTime"] = arrow.get(request.POST["startTime"],'YYYY-MM-DDTHH:mm').datetime
+        form.data["endTime"] = arrow.get(request.POST["endTime"],'YYYY-MM-DDTHH:mm').datetime
         if form.is_valid():
             activity = Activity()
             activity.day = day
-            activity.startTime = arrow.get(request.POST["startTime"],'HH:mm:ss').datetime
-            activity.endTime = arrow.get(request.POST["endTime"],'HH:mm:ss').datetime
+            activity.startTime = arrow.get(request.POST["startTime"],'YYYY-MM-DDTHH:mm').datetime
+            activity.endTime = arrow.get(request.POST["endTime"],'YYYY-MM-DDTHH:mm').datetime
             activity.description = form.cleaned_data["description"]
             activity.category = form.cleaned_data["category"]
             activity.save()
