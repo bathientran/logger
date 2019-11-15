@@ -23,8 +23,8 @@ class Migration(migrations.Migration):
             name='Activity',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('startTime', models.DateTimeField(default=datetime.now(), blank=True)),
-                ('endTime', models.DateTimeField(default=datetime.now(), blank=True)),
+                ('startTime', models.DateTimeField()),
+                ('endTime', models.DateTimeField()),
                 ('description', models.CharField(max_length=200)),
                 ('category', models.CharField(choices=[('Sleep', 'SLEEP'), ('Academics', 'ACADEMICS'), ('Leisure', 'LEISURE'), ('Mental Health', 'MENTAL HEALTH'), ('Personal Development', 'PERSONAL DEVELOPMENT'), ('Professional Development', 'PROFESSIONAL DEVELOPMENT'), ('Operational', 'OPERATIONAL'), ('Excercise', 'EXCERCISE'), ('Health', 'HEALTH')], max_length=50)),
                 ('day', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='logbook.Day')),

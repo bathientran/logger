@@ -20,8 +20,8 @@ class Activity(models.Model):
     )
 
     day = models.ForeignKey(Day, on_delete=models.CASCADE)
-    startTime = models.DateTimeField()
-    endTime = models.DateTimeField()
+    startTime = models.DateTimeField(default=datetime.datetime.now(), blank=True)
+    endTime = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     description = models.CharField(max_length=200)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
 
