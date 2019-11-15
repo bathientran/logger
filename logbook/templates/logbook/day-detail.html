@@ -37,7 +37,7 @@
         <tr>
             <td>{{ activity.startTime | date:'H:i' }}</td>
             <td>{{ activity.endTime | date:'H:i' }}</td>
-            <td>{{ activity.get_duration | date:'H:i' }}</td>
+            <td>{{ activity.get_duration }}</td>
             <td>{{ activity.description }}</td>
             <td>{{ activity.category }}</td>
             <td> <a href="{% url 'logbook:delete-activity' activity.id %}">Delete</a> </td>
