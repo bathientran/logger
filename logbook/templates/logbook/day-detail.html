@@ -1,0 +1,79 @@
+{% extends 'logbook/base.html' %}
+{% block content %}
+<h1> Day View - {{ day.entryDate}}</h1>
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <button class="close" data-dismiss="alert">
+                    <small><sup>x</sup></small>
+                </button>
+                {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success alert-dismissable" role="alert">
+                <button class="close" data-dismiss="alert">
+                    <small><sup>x</sup></small>
+                </button>
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<div class="table-responsive">  
+<table class='table table-hover'>
+    <thead class='thead-dark'>
+        <tr>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Duration</th>
+            <th>Description</th>
+            <th colspan="2">Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    </tbody>
+    {% for activity in day.activity_set.all %}
+        <tr>
+            <td>{{ activity.startTime | date:'H:i' }}</td>
+            <td>{{ activity.endTime | date:'H:i' }}</td>
+            <td>{{ activity.get_duration }}</td>
+            <td>{{ activity.description }}</td>
+            <td>{{ activity.category }}</td>
+            <td> <a href="{% url 'logbook:delete-activity' activity.id %}">Delete</a> </td>
+        </tr>
+    {% endfor %}
+    </tbody> 
+</table>
+</div>
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="col">
+                <input type="datetime-local" class="form-control" placeholder="Start Time" name="startTime">
+            </div>
+            <div class="col">
+                <input type="datetime-local" class="form-control" placeholder="End Time" name="endTime">
+            </div>
+            <div class="col">
+                    <input type="text" class="form-control" placeholder="Description" name="description">
+            </div>
+            <div class="col">
+                    <select id = "category" class="form-control" name="category">
+                            <option value = "Sleep">Sleep</option>
+                            <option value = "Academics">Academics</option>
+                            <option value = "Leisure">Leisure</option>
+                            <option value = "Mental Health">Mental Health</option>
+                            <option value = "Personal Development">Personal Development</option>
+                            <option value = "Professional Development">Professional Development</option>
+                            <option value = "Operational">Operational</option>
+                            <option value = "Excercise">Excercise</option>
+                            <option value = "Health">Health</option>
+                    </select>
+            </div>
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Add Activity</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
